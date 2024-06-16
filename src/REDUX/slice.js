@@ -45,7 +45,7 @@ export const questionSlice = createSlice({
 
 const changeQuestions = createSlice({
   name: "changeQuestion",
-  initialState: { value: 0 },
+  initialState: { value: 1 },
   reducers: {
     nextQuestion: (state) => {
       state.value += 1;

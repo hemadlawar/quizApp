@@ -21,10 +21,11 @@ function App() {
   const prevQuestionnn = () => {
     dispatch(prevQuestion());
   };
-  console.log(states);
+
+  console.log();
 
   const layout = states.questions.map((question) => {
-    if (question.questionNumber == 1) {
+    if (question.questionNumber === states.changeQuestion.value) {
       return (
         <div>
           <button onClick={prevQuestionnn}>Previous</button>
