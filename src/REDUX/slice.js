@@ -1,5 +1,6 @@
 // counterSlice.js
 import { createSlice } from "@reduxjs/toolkit";
+import { queryAllByTestId } from "@testing-library/react";
 
 export const counterSlice = createSlice({
   name: "counter",
@@ -42,12 +43,24 @@ export const questionSlice = createSlice({
   reducers: {},
 });
 
+const changeQuestions = createSlice({
+  name: "changeQuestion",
+  initialState: { value: 0 },
+  reducers: {
+    nextQuestion: (state) => {
+      state.value += 1;
+    },
+    prevQuestion: (state) => {
+      state.value -= 1;
+    },
+  },
+});
+
 // Actions
 export const { increment, reset } = counterSlice.actions;
-
-// Selectors
-export const selectCount = (state) => state.counter.value;
+export const { nextQuestion, prevQuestion } = changeQuestions.actions;
 
 // Reducers
 export const counterReducer = counterSlice.reducer;
 export const questionReducer = questionSlice.reducer;
+export const changeQuestionReducer = changeQuestions.reducer;
