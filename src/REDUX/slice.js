@@ -39,6 +39,23 @@ export const questionSlice = createSlice({
       options: { a: "Paris", b: "Dubai", c: "Baghdad", d: "None of them" },
       correct: "None of them",
     },
+    {
+      questionNumber: 4,
+      title: "capital of Uk is------",
+      options: { a: "Paris", b: "london", c: "Baghdad", d: "None of them" },
+      correct: "london",
+    },
+    {
+      questionNumber: 5,
+      title: "capital of mexico is------",
+      options: {
+        a: "erbil",
+        b: "mexico city",
+        c: "Baghdad",
+        d: "None of them",
+      },
+      correct: "mexico city",
+    },
   ],
   reducers: {},
 });
