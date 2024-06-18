@@ -5,7 +5,7 @@ import {
   nextQuestion,
   prevQuestion,
 } from "../src/REDUX/slice";
-
+import "./app.scss";
 function App() {
   const dispatch = useDispatch();
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////get list of questions
@@ -34,7 +34,7 @@ function App() {
   const layout = states.questions.map((question) => {
     if (question.questionNumber === states.changeQuestion.value) {
       return (
-        <div>
+        <div className="App">
           <button onClick={prevQuestionnn}>Previous</button>
           <button onClick={NextQuestionnn}>Next</button>
 
