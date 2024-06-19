@@ -56,6 +56,17 @@ export const questionSlice = createSlice({
       },
       correct: "mexico city",
     },
+    {
+      questionNumber: 6,
+      title: "capital of brazil is------",
+      options: {
+        a: "brazil",
+        b: "mexico city",
+        c: "Baghdad",
+        d: "None of them",
+      },
+      correct: "mexico city",
+    },
   ],
   reducers: {},
 });
