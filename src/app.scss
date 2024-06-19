@@ -1,3 +1,11 @@
-.App {
-  background-color: rgb(166, 123, 156);
+// variables
+$blue_color: #0080ff;
+$question_title: 24px;
+.App2 {
+  background-color: $blue_color;
+}
+
+.question_titile {
+  font-size: $question_title;
+  color: #000;
 }

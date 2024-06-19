@@ -34,11 +34,11 @@ function App() {
   const layout = states.questions.map((question) => {
     if (question.questionNumber === states.changeQuestion.value) {
       return (
-        <div className="App">
+        <div className=" quiz-container">
           <button onClick={prevQuestionnn}>Previous</button>
           <button onClick={NextQuestionnn}>Next</button>
 
-          <p>{question.title}</p>
+          <p className="question_titile">{question.title}</p>
           <ul>
             <li>{question.options.a}</li>
             <li>{question.options.b}</li>
