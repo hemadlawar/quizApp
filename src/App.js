@@ -29,9 +29,14 @@ function App() {
       dispatch(prevQuestion());
     }
   };
-  console.log(states);
-  console.log(states.changeQuestion.value);
-  const layout = states.questions.map((question) => {
+
+  const checkAnsawer = (your_ansawer, index) => {
+    if (your_ansawer == states.questions[index].correct) {
+      console.log(your_ansawer);
+      dispatch(increment());
+    }
+  };
+  const layout = states.questions.map((question, index) => {
     if (question.questionNumber === states.changeQuestion.value) {
       return (
         <div className=" quiz-container">
@@ -39,16 +44,41 @@ function App() {
           <button onClick={NextQuestionnn}>Next</button>
 
           <p className="question_titile">{question.title}</p>
-          <ul>
-            <li>{question.options.a}</li>
-            <li>{question.options.b}</li>
-            <li>{question.options.c}</li>
-            <li>{question.options.d}</li>
+          <ul className=" listStyle">
+            <li
+              onClick={() => {
+                checkAnsawer(question.options.a, index);
+              }}
+            >
+              {question.options.a}
+            </li>
+            <li
+              onClick={() => {
+                checkAnsawer(question.options.b, index);
+              }}
+            >
+              {question.options.b}
+            </li>
+            <li
+              onClick={() => {
+                checkAnsawer(question.options.c, index);
+              }}
+            >
+              {question.options.c}
+            </li>
+            <li
+              onClick={() => {
+                checkAnsawer(question.options.d, index);
+              }}
+            >
+              {question.options.d}
+            </li>
           </ul>
         </div>
       );
     }
   });
+  console.log(states.counter.value);
 
   return <div>{layout}</div>;
 }
