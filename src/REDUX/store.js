@@ -4,6 +4,7 @@ import {
   counterReducer,
   questionReducer,
   changeQuestionReducer,
+  showResultReducer,
 } from "../REDUX/slice";
 
 export const store = configureStore({
@@ -11,5 +12,6 @@ export const store = configureStore({
     counter: counterReducer,
     questions: questionReducer,
     changeQuestion: changeQuestionReducer,
+    showResult: showResultReducer,
   },
 });

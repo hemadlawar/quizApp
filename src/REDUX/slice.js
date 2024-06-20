@@ -60,12 +60,45 @@ export const questionSlice = createSlice({
       questionNumber: 6,
       title: "capital of brazil is------",
       options: {
-        a: "brazil",
+        a: "brazilia",
         b: "mexico city",
         c: "Baghdad",
         d: "None of them",
       },
-      correct: "mexico city",
+      correct: "brazilia",
+    },
+    {
+      questionNumber: 7,
+      title: "capital of russia is------",
+      options: {
+        a: "brazil",
+        b: "mexico city",
+        c: "Baghdad",
+        d: "moscow",
+      },
+      correct: "moscow",
+    },
+    {
+      questionNumber: 8,
+      title: "capital of south korea is------",
+      options: {
+        a: "seoul",
+        b: "mexico city",
+        c: "new york",
+        d: "moscow",
+      },
+      correct: "seoul",
+    },
+    {
+      questionNumber: 9,
+      title: "capital of greece is------",
+      options: {
+        a: "brazil",
+        b: "mexico city",
+        c: "athens",
+        d: "moscow",
+      },
+      correct: "athens",
     },
   ],
   reducers: {},
@@ -84,11 +117,28 @@ const changeQuestions = createSlice({
   },
 });
 
+const showResult = createSlice({
+  name: "showTheFinalResult",
+  initialState: {
+    showYourMark: false,
+  },
+  reducers: {
+    presentTheResult: (state) => {
+      state.showYourMark = true;
+    },
+    hideTheResult: (state) => {
+      state.showYourMark = false;
+    },
+  },
+});
+
 // Actions
 export const { increment, reset } = counterSlice.actions;
 export const { nextQuestion, prevQuestion } = changeQuestions.actions;
+export const { presentTheResult, hideTheResult } = showResult.actions;
 
 // Reducers
 export const counterReducer = counterSlice.reducer;
 export const questionReducer = questionSlice.reducer;
 export const changeQuestionReducer = changeQuestions.reducer;
+export const showResultReducer = showResult.reducer;

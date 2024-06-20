@@ -15,9 +15,7 @@ function App() {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////next Question
   const NextQuestionnn = () => {
-    if (states.questions.length === states.changeQuestion.value) {
-      alert("there is no any next question!");
-    } else {
+    if (true) {
       dispatch(nextQuestion());
     }
   };
@@ -31,11 +29,26 @@ function App() {
   };
 
   const checkAnsawer = (your_ansawer, index) => {
-    if (your_ansawer == states.questions[index].correct) {
-      console.log(your_ansawer);
+    if (
+      your_ansawer == states.questions[index].correct &&
+      states.changeQuestion.value < states.questions.length
+    ) {
       dispatch(increment());
+      dispatch(nextQuestion());
+    } else {
+      if (your_ansawer == states.questions[index].correct) {
+        dispatch(increment());
+      } else {
+        if (states.changeQuestion.value < states.questions.length) {
+          dispatch(nextQuestion());
+        }
+      }
     }
   };
+  if (states.counter.value == states.questions.length) {
+    console.log("done");
+  }
+
   const layout = states.questions.map((question, index) => {
     if (question.questionNumber === states.changeQuestion.value) {
       return (
@@ -78,7 +91,6 @@ function App() {
       );
     }
   });
-  console.log(states.counter.value);
 
   return <div>{layout}</div>;
 }
