@@ -4,6 +4,8 @@ import {
   reset,
   nextQuestion,
   prevQuestion,
+  presentTheResult,
+  hideTheResult,
 } from "../src/REDUX/slice";
 import "./app.scss";
 function App() {
@@ -37,7 +39,7 @@ function App() {
       dispatch(nextQuestion());
     } else {
       if (your_ansawer == states.questions[index].correct) {
-        dispatch(increment());
+        // dispatch(increment());
       } else {
         if (states.changeQuestion.value < states.questions.length) {
           dispatch(nextQuestion());
@@ -45,17 +47,16 @@ function App() {
       }
     }
   };
-  if (states.counter.value == states.questions.length) {
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  if (states.changeQuestion.value == states.questions.length) {
     console.log("done");
+    dispatch(presentTheResult());
   }
 
   const layout = states.questions.map((question, index) => {
     if (question.questionNumber === states.changeQuestion.value) {
       return (
         <div className=" quiz-container">
-          <button onClick={prevQuestionnn}>Previous</button>
-          <button onClick={NextQuestionnn}>Next</button>
-
           <p className="question_titile">{question.title}</p>
           <ul className=" listStyle">
             <li
@@ -92,7 +93,15 @@ function App() {
     }
   });
 
-  return <div>{layout}</div>;
+  return (
+    <div>
+      <div> {layout}</div>
+      <div>
+        {states.showResult.showYourMark &&
+          `your marks is ${states.counter.value + 1} /9`}
+      </div>
+    </div>
+  );
 }
 
 export default App;
