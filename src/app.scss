@@ -1,14 +1,116 @@
-// variables
-$blue_color: #0080ff;
-$question_title: 24px;
-.App2 {
-  background-color: $blue_color;
+// app.scss
+
+$app-bg-color: #f9f9f9;
+$quiz-bg-color: #ffffff;
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$text-color: #333;
+$border-radius: 5px;
+$padding: 20px;
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $app-bg-color;
+  font-family: "Arial, sans-serif";
+  color: $text-color;
+
+  .question-layout {
+    width: 100%;
+    max-width: 600px;
+    margin: $padding;
+    padding: $padding;
+    background-color: $quiz-bg-color;
+    border-radius: $border-radius;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .quiz-container {
+    margin-bottom: $padding;
+
+    .question-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: $padding / 2;
+    }
+
+    .list-style {
+      list-style-type: none;
+      padding: 0;
+
+      .option {
+        background-color: $primary-color;
+        color: #fff;
+        padding: $padding / 2;
+        margin: $padding / 4 0;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+    }
+  }
+
+  .result {
+    margin: $padding;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $secondary-color;
+  }
+
+  .navigation {
+    display: flex;
+    gap: $padding / 2;
+    margin: $padding;
+
+    .nav-button {
+      padding: $padding / 2 $padding;
+      border: none;
+      border-radius: $border-radius;
+      background-color: $primary-color;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
 }
 
-.question_titile {
-  font-size: $question_title;
-  color: #000;
-}
-.listStyle {
-  list-style-type: none;
+// Responsive Design
+@media (max-width: 768px) {
+  .app-container {
+    .question-layout {
+      padding: $padding / 2;
+    }
+
+    .quiz-container {
+      .question-title {
+        font-size: 1.2rem;
+      }
+
+      .list-style {
+        .option {
+          padding: $padding / 3;
+        }
+      }
+    }
+
+    .navigation {
+      flex-direction: column;
+
+      .nav-button {
+        width: 100%;
+        margin: $padding / 4 0;
+      }
+    }
+  }
 }

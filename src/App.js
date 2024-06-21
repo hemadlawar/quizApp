@@ -8,20 +8,17 @@ import {
   hideTheResult,
 } from "../src/REDUX/slice";
 import "./app.scss";
+
 function App() {
   const dispatch = useDispatch();
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////get list of questions
-  const states = useSelector((state) => {
-    return state;
-  });
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////next Question
+  const states = useSelector((state) => state);
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////next Question
   const NextQuestionnn = () => {
     if (true) {
       dispatch(nextQuestion());
     }
   };
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////previous Question
+  //////////////////////////////////////////////////////////////////////////////////////////////////////// previouse Question
   const prevQuestionnn = () => {
     if (states.changeQuestion.value <= 1) {
       alert("there is no any previous question!");
@@ -29,7 +26,7 @@ function App() {
       dispatch(prevQuestion());
     }
   };
-
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////check ansaweer
   const checkAnsawer = (your_ansawer, index) => {
     if (
       your_ansawer == states.questions[index].correct &&
@@ -39,7 +36,7 @@ function App() {
       dispatch(nextQuestion());
     } else {
       if (your_ansawer == states.questions[index].correct) {
-        // dispatch(increment());
+        dispatch(increment());
       } else {
         if (states.changeQuestion.value < states.questions.length) {
           dispatch(nextQuestion());
@@ -47,19 +44,23 @@ function App() {
       }
     }
   };
-  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////// present result
   if (states.changeQuestion.value == states.questions.length) {
     console.log("done");
     dispatch(presentTheResult());
   }
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////restart
+  const restart = () => {
+    window.location.reload();
+  };
   const layout = states.questions.map((question, index) => {
     if (question.questionNumber === states.changeQuestion.value) {
       return (
-        <div className=" quiz-container">
-          <p className="question_titile">{question.title}</p>
-          <ul className=" listStyle">
+        <div className="quiz-container">
+          <p className="question-title">{question.title}</p>
+          <ul className="list-style">
             <li
+              className="option"
               onClick={() => {
                 checkAnsawer(question.options.a, index);
               }}
@@ -67,6 +68,7 @@ function App() {
               {question.options.a}
             </li>
             <li
+              className="option"
               onClick={() => {
                 checkAnsawer(question.options.b, index);
               }}
@@ -74,6 +76,7 @@ function App() {
               {question.options.b}
             </li>
             <li
+              className="option"
               onClick={() => {
                 checkAnsawer(question.options.c, index);
               }}
@@ -81,6 +84,7 @@ function App() {
               {question.options.c}
             </li>
             <li
+              className="option"
               onClick={() => {
                 checkAnsawer(question.options.d, index);
               }}
@@ -94,11 +98,16 @@ function App() {
   });
 
   return (
-    <div>
-      <div> {layout}</div>
-      <div>
+    <div className="app-container">
+      <div className="question-layout">{layout}</div>
+      <div className="result">
         {states.showResult.showYourMark &&
-          `your marks is ${states.counter.value + 1} /9`}
+          `Your marks are ${states.counter.value} /9`}
+        <div className="navigation">
+          <button className="nav-button" onClick={restart}>
+            Restart
+          </button>
+        </div>
       </div>
     </div>
   );
